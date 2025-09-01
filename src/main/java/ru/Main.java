@@ -1,10 +1,40 @@
 package ru;
 
+import java.io.File;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        /*Задание 10*/
-        guessGame();
+        /*Задача "Курсовой проект. Задание по теме "Циклы""*/
+        //гибрид совместо разработанного с InnoKodAi(Иннотех) анализ данных, учтены все критерии задачи
+        Scanner scanner = new Scanner(System.in);
+        int fileCount = 0; //счетчик (успешно найденный файл)
+
+        while (true) { //бесконечный цикл
+            System.out.print("Введите путь к файлу: ");
+            String path = scanner.nextLine();
+
+            File file = new File(path);
+            boolean fileExists = file.exists(); //файл (условие)
+            boolean isDirectory = file.isDirectory(); //каталог (условие)
+
+            if (!fileExists || isDirectory) {
+                if (!fileExists) {
+                    System.out.println("файл не существует или это папка");
+                } else {
+                    System.out.println("это папка а не файл");
+                }
+                continue; //использование оператора continue
+            }
+
+            System.out.println("Путь указан верно");
+            fileCount++;
+            System.out.println("Это файл номер " + fileCount);
+        }
+
+        /*Задание 10
+        guessGame();*/
 
         /*Задание 9
         rightTriangle(10);*/
