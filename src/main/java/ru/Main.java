@@ -60,24 +60,21 @@ public class Main {
      */
     public static void guessGame() {
         int randomNum = 3;
-        int attempts = 0; // счетчик попыток
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        int attempts = 0; //попытки
 
-        try (java.util.Scanner sc = new java.util.Scanner(System.in)) {
-            while (true) {
-                System.out.println("What number am I thinking (0 to 9)? :");
-                int x = sc.nextInt();
-                attempts++;
+        while (true) { //+ цикл
+            System.out.println("Какой число задумано от (0 to 9)? :");
+            int x = sc.nextInt();
+            attempts++; //попытки
 
-                if (x == randomNum) {
-                    System.out.println("Yes, it's " + randomNum);
-                    System.out.println("Number of attempts: " + attempts);
-                    break;
-                } else {
-                    System.out.println("No, try again");
-                }
+            if (x == randomNum) {
+                System.out.println("Да, это оно " + randomNum); //успешно
+                System.out.println("Количество попыток: " + attempts); //количество попыток
+                break; //выйти
+            } else {
+                System.out.println("Нет, пробуй еще раз");
             }
-        } catch (java.util.InputMismatchException e) {
-            System.out.println("Error: Please enter a valid integer.");
         }
     }
 
