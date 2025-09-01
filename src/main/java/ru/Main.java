@@ -60,15 +60,27 @@ public class Main {
      */
     public static void guessGame() {
         int randomNum = 3;
-        java.util.Scanner sc = new java.util.Scanner(System.in);
-        System.out.println("What number am I thinking (0 to 9)? :");
-        int x = sc.nextInt();
-        if (x != randomNum) {
-            System.out.println("No, try again");
-        } else {
-            System.out.println("Yes, it`s " + randomNum);
+        int attempts = 0; // счетчик попыток
+
+        try (java.util.Scanner sc = new java.util.Scanner(System.in)) {
+            while (true) {
+                System.out.println("What number am I thinking (0 to 9)? :");
+                int x = sc.nextInt();
+                attempts++;
+
+                if (x == randomNum) {
+                    System.out.println("Yes, it's " + randomNum);
+                    System.out.println("Number of attempts: " + attempts);
+                    break;
+                } else {
+                    System.out.println("No, try again");
+                }
+            }
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Error: Please enter a valid integer.");
         }
     }
+
 
     /*Задание 9
     Правый треугольник. Дана следующая сигнатура метода:
