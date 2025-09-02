@@ -1,12 +1,82 @@
 package ru;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        /*Задача "Курсовой проект. Задание по теме "Циклы""*/
+        /*Задание 12*/
+        int[] arr = {1, 2, 3, 4, 5};
+        int[] ins = {7, 8, 9};
+        System.out.println("До :" + Arrays.toString(arr));
+        System.out.println("Добавление массива в массив :" + Arrays.toString(add(arr, ins, 4)));
+
+        /*Задание 11
+        int[] arr = {2, 1, 2, 3, 8, 2, 2, 9};
+        System.out.println("До :" + Arrays.toString(arr));
+        System.out.println("Добавление в массив :" + Arrays.toString(add(arr, 9, 3)));*/
+
+        /*Задание 10
+        int[] arr = {1, 2, -3, 4, -2, 2, -5};
+        System.out.println("До :" + Arrays.toString(arr));
+        System.out.println("Удалить негатив: " + Arrays.toString(deleteNegative(arr)));*/
+
+        /*Задание 9
+        int[] arr = {2, 1, 2, 3, 8, 2, 2, 9};
+        System.out.println(Arrays.toString(findAll(arr, 2)));*/
+
+        /*Задание 8
+        int[] arr1 = {1, 2, 3};
+        int[] arr2 = {7, 8, 9};
+        System.out.println(Arrays.toString(concat(arr1,arr2)));*/
+
+        /*Задание 7
+        int[] arr = {1, 2, 3, 4, 5};
+        System.out.println("До : " + Arrays.toString(arr));
+        System.out.println("После : " + Arrays.toString(reverseBack(arr)));*/
+
+        /*Задание 6
+        int[] arr = {1, 2, 3, 4, 5};
+        System.out.println("До : " + Arrays.toString(arr));
+        reverse(arr);
+        System.out.println("После : " + Arrays.toString(arr));*/
+
+        /*Задание 5
+        int[] arr = {1, -2, -7, 4, 2, 2, 5};
+        int[] arr2 = {1, -2, -7, 4, -7, -2, 1};
+        System.out.println(Arrays.toString(arr));
+        System.out.println(palindrom(arr));
+        System.out.println("------------");
+        System.out.println(Arrays.toString(arr2));
+        System.out.println(palindrom(arr2));*/
+
+        /*Задание 4
+        int[] arr = {1, -2, -7, 4, 2, 2, 5};
+        System.out.println(Arrays.toString(arr));
+        System.out.println(countPositive(arr));*/
+
+        /*Задание 3
+        int[] arr = {1, -2, -7, 4, 2, 2, 5};
+        System.out.println(Arrays.toString(arr));
+        System.out.println(maxAbs(arr));*/
+
+        /*Задание 2
+        int[] arr = {1, 2, 3, 4, 2, 2, 5};
+        System.out.println(Arrays.toString(arr));
+        System.out.println(findLast(arr, 2));
+        System.out.println(findLast(arr, 7));*/
+
+        /*Задание 1
+        int[] arr = {1, 2, 3, 4, 2, 2, 5};
+        System.out.println(Arrays.toString(arr));
+        System.out.println(findFirst(arr, 2));
+        System.out.println(findFirst(arr, 6));*/
+
+        // Циклы
+
+        /*Задача "Курсовой проект. Задание по теме "Циклы""
         //гибрид совместо разработанного с InnoKodAi(Иннотех) анализ данных, учтены все критерии задачи
         Scanner scanner = new Scanner(System.in);
         int fileCount = 0; //счетчик (успешно найденный файл)
@@ -32,6 +102,7 @@ public class Main {
             fileCount++;
             System.out.println("Это файл номер " + fileCount);
         }
+        */
 
         /*Задание 10
         guessGame();*/
@@ -71,6 +142,232 @@ public class Main {
         String res=listNums(10);
         System.out.println(res);*/
     }
+
+    /*Задание 12
+    Добавление массива в массив. Дана следующая сигнатура метода:
+    public static int[] add(int[] arr, int[] ins, int pos);
+    Необходимо реализовать метод таким образом, чтобы он возвращал новый массив, который будет содержать все элементы массива arr, однако в позицию pos будут вставлены значения массива ins.
+     */
+    public static int[] add(int[] arr, int[] ins, int pos){
+        int[] res = new int[arr.length + ins.length]; //конечный массив - его и покажем)
+
+        for (int i = 0; i < pos; i++) { //копируем часть массива
+            res[i] = arr[i];
+        }
+
+        for (int i = 0; i < ins.length; i++) { //втсавим из массива ins
+            res[pos + i] = ins[i];
+        }
+
+        for (int i = pos; i < arr.length; i++) { //копируем остатки
+            res[ins.length + i] = arr[i];
+        }
+        return res; //гугл как много я стал тебя серчить))
+    }
+
+    /*Задание 11
+    Добавление в массив. Дана следующая сигнатура метода:
+    public static int[] add(int[] arr, int x, int pos);
+    Необходимо реализовать метод таким образом, чтобы он возвращал новый массив, который будет содержать все элементы массива arr, однако в позицию pos будет вставлено значение x.*/
+    public static int[] add(int[] arr, int x, int pos) {
+        int[] newArr = new int[arr.length + 1]; //массив +1 индекс = новый массив
+
+        for (int i = 0; i < pos; i++) { // вставили значения текущего массива в новый массив
+            newArr[i] = arr[i];
+        }
+
+        newArr[pos] = x; //новое значение в массив
+
+        for (int i = pos; i < arr.length; i++) {
+            newArr[i + 1] = arr[i]; //копируем после позиции вставки
+        }
+        return newArr;
+    }
+
+    /*Задание 10
+    Удалить негатив. Дана следующая сигнатура метода:
+    public static int[] deleteNegative(int[] arr);
+    Необходимо реализовать метод таким образом, чтобы он возвращал новый массив, в котором записаны все элементы массива arr кроме отрицательных.
+     */
+    public static int[] deleteNegative(int[] arr){
+        int count = 0; //вхождения
+
+        for (int num : arr) {
+            if (num >= 0) count++; //положительные циферки
+        }
+
+        int[] res = new int[count]; //создаем массив под результат и заполняем индексами искомого числа
+        int index = 0; //индекс
+
+        for (int num : arr) { //ходим по циклу, собираем монеты)
+            if (num >= 0) {
+                res[index] = num;
+                index++;
+            }
+        }
+        return res;
+    }
+
+    /*Задание 9
+    Все вхождения. Дана следующая сигнатура метода:
+    public static int[] findAll(int[] arr, int x);
+    Необходимо реализовать метод таким образом, чтобы он возвращал новый массив, в котором записаны индексы всех вхождений числа x в массив arr.
+     */
+    public static int[] findAll(int[] arr, int x){
+        int count = 0; //вхождения
+
+        for (int num : arr) {
+            if (num == x) count++;
+        }
+
+        int[] res = new int[count]; //создаем массив под резельтат и заполняем индексами искомого числа
+        int index = 0; //индекс
+
+        for (int i = 0 ; i < arr.length; i++) { //ходим по циклу, собираем монеты)
+            if (arr[i] == x) {
+                res[index] = i;
+                index++;
+            }
+        }
+        return res;
+    }
+
+    /*Задание 8
+    Объединение. Дана следующая сигнатура метода:
+    public static int[] concat(int[] arr1, int[] arr2);
+    Необходимо реализовать метод таким образом, чтобы он возвращал новый массив, в котором сначала идут элементы первого массива (arr1), а затем второго (arr2).
+     */
+    public static int[] concat(int[] arr1, int[] arr2){
+        int[] res = new int [arr1.length + arr2.length];
+
+        for (int i = 0; i < arr1.length; i++) { //заполнили первый массив arr1
+            res[i] = arr1[i];
+        }
+        for (int i = 0; i < arr2.length; i++) { //заполнили второй массив arr2
+            res[arr1.length + i] = arr2[i];
+        }
+        return res;
+    }
+
+    /*Задание 7
+    Возвратный реверс. Дана следующая сигнатура метода:
+    public static int[] reverseBack(int[] arr);
+    Необходимо реализовать метод таким образом, чтобы он возвращал новый массив, в котором значения массива arr записаны задом наперед.
+     */
+    public static int[] reverseBack(int[] arr) {
+        int[] res = Arrays.copyOf(arr, arr.length); //копия
+        int left = 0; //левая сторонв
+        int right = res.length - 1; //правая сторона
+
+        while (left < right) {
+            //прежняя логика из предыдущего задания))
+            int temp = res[left];
+            res[left] = res[right];
+            res[right] = temp;
+            left++;
+            right--;
+        }
+        return res;
+    }
+
+    /*Задание 6
+    Реверс. Дана следующая сигнатура метода:
+    public static void reverse(int[] arr);
+    Необходимо реализовать метод таким образом, чтобы он изменял массив arr. После проведенных изменений массив должен быть записан задом-наперед
+     */
+    public static void reverse(int[] arr){
+        int left = 0; //левая сторонв
+        int right = arr.length - 1; //правая сторона
+
+        while (left < right) {
+            //ух логика)) гугл рулит
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+    }
+
+    /*Задание 5
+    Палиндром. Дана следующая сигнатура метода:
+    public static boolean palindrom(int[] arr);
+    Необходимо реализовать метод таким образом, чтобы он возвращал true, если массив arr является палиндромом, то есть справа-налево и наоборот читается одинаково
+     */
+    public static boolean palindrom(int[] arr){
+        int left = 0; //левая сторонв
+        int right = arr.length - 1; //правая сторона
+
+        while (left < right) {
+            if (arr[left] != arr[right]) { //сравним обе стороны
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true; //читается одинаково
+    }
+
+    /*Задание 4
+    Подсчет позитива. Дана следующая сигнатура метода:
+    public static int countPositive(int[] arr);
+    Необходимо реализовать метод таким образом, чтобы он возвращал количество положительных элементов массива arr.
+     */
+    public static int countPositive(int[] arr){
+        int count = 0; //счетчик
+        for (int num : arr) { //проходим по массиву
+            if (num > 0) { //если положительное то в копилку
+                count++; //счетчик в плюс
+            }
+        }
+        return count; //вернем искомое число положительных чисел
+    }
+
+    /*Задание 3
+    Поиск максимального. Дана следующая сигнатура метода:
+    public static int maxAbs(int[] arr);
+    Необходимо реализовать метод таким образом, чтобы он возвращал наибольшее по модулю (то есть без учета знака) значение массива arr.
+     */
+    public static int maxAbs(int[] arr){
+        int max = 0; //переменная с максимальным моделем
+        for (int num : arr) { //читаем массив
+            if (Math.abs(num) > Math.abs(max)) { //поиск большего модуля
+                max = num; //обновили максимальный модкль
+            }
+        }
+        return max; //вернем искомый модуль
+    }
+
+    /*Задание 2
+    Поиск последнего значения. Дана следующая сигнатура метода:
+    public static int findLast(int[] arr, int x);
+    Необходимо реализовать метод таким образом, чтобы он возвращал индекс последнего вхождения числа x в массив arr. Если число не входит в массив – возвращается -1.
+     */
+    public static int findLast(int[] arr, int x){
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == x) {
+                return i; // c конца возвращаем вхождение
+            }
+        }
+        return -1; // если число не найдено -1
+    }
+
+    /*Задание 1
+    Поиск первого значения. Дана следующая сигнатура метода:
+    public static int findFirst(int[] arr, int x);
+    Необходимо реализовать метод таким образом, чтобы он возвращал индекс первого вхождения числа x в массив arr. Если число не входит в массив – возвращается -1.
+     */
+    public static int findFirst(int[] arr, int x){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == x) {
+                return i; // возвращаем первое вхождение
+            }
+        }
+        return -1; // если число не найдено -1
+    }
+
+
+    // Циклы
 
     /*Задание 10
     Угадайка. Дан следующий метод:
