@@ -11,7 +11,7 @@ public class Main {
         int[] arr = {1, 2, 3, 4, 5};
         int[] ins = {7, 8, 9};
         System.out.println("До :" + Arrays.toString(arr));
-        System.out.println("Добавление массива в массив :" + Arrays.toString(add(arr, ins, 4)));
+        System.out.println("Добавление массива в массив :" + Arrays.toString(add(arr, ins, 15)));
 
         /*Задание 11
         int[] arr = {2, 1, 2, 3, 8, 2, 2, 9};
@@ -149,6 +149,12 @@ public class Main {
     Необходимо реализовать метод таким образом, чтобы он возвращал новый массив, который будет содержать все элементы массива arr, однако в позицию pos будут вставлены значения массива ins.
      */
     public static int[] add(int[] arr, int[] ins, int pos){
+
+        // вводимо число позиции pos // обработка ошибки (IllegalArgumentException)
+        if (pos < 0 || pos > arr.length) {
+            throw new IllegalArgumentException("Позиция должна быть в пределах массива от 0 до " + arr.length);
+        }
+
         int[] res = new int[arr.length + ins.length]; //конечный массив - его и покажем)
 
         for (int i = 0; i < pos; i++) { //копируем часть массива
